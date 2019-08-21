@@ -444,6 +444,8 @@ class DataTables extends Component {
             deselectOnClickaway={deselectOnClickaway}
             showRowHover={showRowHover}
             stripedRows={stripedRows}
+            page={page}
+            rowSize={rowSize}
           >
             {data.map((row, index) => {
               return (

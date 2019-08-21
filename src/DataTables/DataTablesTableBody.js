@@ -29,6 +29,8 @@ class DataTablesTableBody extends TableBody {
      * Controls the display of the row checkbox. The default value is true.
      */
     displayRowCheckbox: PropTypes.bool,
+    page: PropTypes.number,
+    rowSize: PropTypes.number,
     /**
      * @ignore
      * If true, multiple table rows can be selected.
@@ -112,9 +114,15 @@ class DataTablesTableBody extends TableBody {
     style: PropTypes.object,
   };
 
+  getRowNumberByPage() {
+    let page = this.props.page;
+    let rowSize = this.props.rowSize;
+    return ((page * rowSize) - rowSize);
+  }
+
   createRows() {
     const numChildren = React.Children.count(this.props.children);
-    let rowNumber = 0;
+    let rowNumber = this.getRowNumberByPage();
     const handlers = {
       onCellClick: this.onCellClick,
       onCellDoubleClick: this.onCellDoubleClick,
@@ -176,6 +184,8 @@ class DataTablesTableBody extends TableBody {
       stripedRows, // eslint-disable-line no-unused-vars
       displayRowCheckbox, // eslint-disable-line no-unused-vars
       preScanRows, // eslint-disable-line no-unused-vars
+      page,
+      rowSize,
       ...other
     } = this.props;
 
