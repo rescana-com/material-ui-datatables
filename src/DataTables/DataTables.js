@@ -62,6 +62,9 @@ function getStyles(props, context) {
 
 function isRowSelected(index, selectedRows) {
   if (Array.isArray(selectedRows)) {
+    if(index > 9){
+      index = index % 10;
+    }
     return selectedRows.includes(index);
   } else {
     return undefined;
