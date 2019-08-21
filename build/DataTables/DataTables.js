@@ -136,7 +136,15 @@ function getStyles(props, context) {
 
 function isRowSelected(index, selectedRows) {
   if (Array.isArray(selectedRows)) {
-    return selectedRows.includes(index);
+    var checkArr = [];
+    selectedRows.map(function (val) {
+      if (val > 9) {
+        checkArr.push(val % 10);
+      } else if (val <= 9) {
+        checkArr.push(val);
+      }
+    });
+    return checkArr.includes(index);
   } else {
     return undefined;
   }

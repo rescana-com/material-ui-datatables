@@ -62,10 +62,15 @@ function getStyles(props, context) {
 
 function isRowSelected(index, selectedRows) {
   if (Array.isArray(selectedRows)) {
-    if(index > 9){
-      index = index % 10;
-    }
-    return selectedRows.includes(index);
+    let checkArr = [];
+    selectedRows.map((val)=>{
+      if(val > 9){
+        checkArr.push(val % 10);
+      } else if(val <= 9){
+        checkArr.push(val);
+      }
+    });
+    return checkArr.includes(index);
   } else {
     return undefined;
   }
