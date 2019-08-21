@@ -1,3 +1,3 @@
-export DataTables from './DataTables';
+export DataTables from './DataTables/DataTables.js';
 
-export default from './DataTables';
+export default from './DataTables/DataTables.js';
